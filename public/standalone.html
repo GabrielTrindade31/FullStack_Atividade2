@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Calculadora de Idade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { darkMode: "class" };
+    </script>
+  </head>
+  <body class="min-h-screen bg-gray-100 text-gray-900">
+    <div class="max-w-3xl mx-auto p-6">
+      <header class="mb-6 flex items-start justify-between">
+        <h1 class="text-3xl font-extrabold tracking-tight">Calculadora de Idade</h1>
+        <button id="themeBtn" class="rounded-xl border border-gray-300 px-3 py-2 text-sm hover:bg-gray-50">Tema escuro</button>
+      </header>
+      <div class="bg-white rounded-2xl shadow p-6 ring-1 ring-black/5">
+        <p class="text-sm text-gray-600 mb-3">Esta é a versão standalone. Para deploy use a versão Vite.</p>
+      </div>
+    </div>
+    <script>
+      const btn = document.getElementById("themeBtn");
+      const root = document.documentElement;
+      let mode = localStorage.getItem("theme") || "light";
+      function apply() {
+        if(mode==="dark"){root.classList.add("dark"); btn.textContent="Tema claro";}
+        else {root.classList.remove("dark"); btn.textContent="Tema escuro";}
+        localStorage.setItem("theme", mode);
+      }
+      btn.onclick = () => { mode = mode==="dark" ? "light" : "dark"; apply(); };
+      apply();
+    </script>
+  </body>
+</html>
